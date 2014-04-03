@@ -8,5 +8,8 @@
     <Setting Name="TwitchPassword" Type="System.String" Scope="Application">
       <Value Profile="(Default)">oauth:xxxxxxxxxxxxxxxxxxxxxxx</Value>
     </Setting>
+    <Setting Name="SocketPort" Type="System.UInt16" Scope="Application">
+      <Value Profile="(Default)">57123</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

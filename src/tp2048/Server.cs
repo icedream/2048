@@ -23,7 +23,7 @@ namespace Icedream.TwitchPlays2048
         public Server()
         {
             _log = LogManager.GetLogger("GameConnector");
-            _server = new WebSocketServer(19661, IPAddress.Loopback)
+            _server = new WebSocketServer(Properties.Settings.Default.SocketPort, IPAddress.Loopback)
             {
                 OnConnect = ctx =>
                 {

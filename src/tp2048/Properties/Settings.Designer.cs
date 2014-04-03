@@ -40,5 +40,14 @@ namespace Icedream.TwitchPlays2048.Properties {
                 return ((string)(this["TwitchPassword"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("57123")]
+        public ushort SocketPort {
+            get {
+                return ((ushort)(this["SocketPort"]));
+            }
+        }
     }
 }
