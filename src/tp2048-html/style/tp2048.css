@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+}
+
 body {
 	overflow: hidden;
 	margin: 0;
@@ -46,6 +50,7 @@ div.info-panel {
 	vertical-align: top;
 	width: 40%;
 	height: 100%;
+	padding-top: 3%;
 	padding-right: 10px;
 	font-size: 0.75em;
 }
@@ -53,13 +58,16 @@ div.info-panel {
 h1.title {
 	text-align: left;
 	float: none;
+	font-size: 5em;
+	margin-top: 8px;
 	position: absolute;
 }
 
 .game-intro {
 	display: block;
 	float: none;
-	text-align: center
+	text-align: center;
+	line-height: inherit;
 }
 
 .scores-container {
@@ -80,8 +88,11 @@ h1.title {
 	-webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
 	border-radius: 8px;
-	padding: 10px;
-	margin-bottom: 4px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 2px;
 	width: 85%
 }
 
@@ -103,5 +114,6 @@ h1.title {
 
 .input-key {
 	width: 20%;
-	text-align: right
+	text-align: right;
+	/*font-family: "Source Sans Pro";*/
 }
