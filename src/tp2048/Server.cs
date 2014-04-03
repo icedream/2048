@@ -90,18 +90,30 @@ namespace Icedream.TwitchPlays2048
 
         static void Main()
         {
-            var appender = new ColoredConsoleAppender
+            if (Environment.OSVersion.Platform != PlatformID.Win32NT)
             {
-                Threshold = Level.All,
-                Layout = new PatternLayout("[%d{HH:mm:ss}] <%logger> %level: %message%newline"),
-            };
-            appender.AddMapping(new ColoredConsoleAppender.LevelColors { Level = Level.Debug, ForeColor = ColoredConsoleAppender.Colors.White });
-            appender.AddMapping(new ColoredConsoleAppender.LevelColors { Level = Level.Info, ForeColor = ColoredConsoleAppender.Colors.White | ColoredConsoleAppender.Colors.HighIntensity });
-            appender.AddMapping(new ColoredConsoleAppender.LevelColors { Level = Level.Warn, ForeColor = ColoredConsoleAppender.Colors.Yellow | ColoredConsoleAppender.Colors.HighIntensity });
-            appender.AddMapping(new ColoredConsoleAppender.LevelColors { Level = Level.Error, ForeColor = ColoredConsoleAppender.Colors.Red | ColoredConsoleAppender.Colors.HighIntensity });
-            appender.AddMapping(new ColoredConsoleAppender.LevelColors { Level = Level.Fatal, ForeColor = ColoredConsoleAppender.Colors.White | ColoredConsoleAppender.Colors.HighIntensity, BackColor = ColoredConsoleAppender.Colors.Red });
-            appender.ActivateOptions();
-            BasicConfigurator.Configure(appender);
+                var appender = new ConsoleAppender
+                {
+                    Threshold = Level.All,
+                    Layout = new PatternLayout("[%d{HH:mm:ss}] <%logger> %level: %message%newline"),
+                };
+                BasicConfigurator.Configure(appender);
+            }
+            else
+            {
+                var appender = new ColoredConsoleAppender
+                {
+                    Threshold = Level.All,
+                    Layout = new PatternLayout("[%d{HH:mm:ss}] <%logger> %level: %message%newline"),
+                };
+                appender.AddMapping(new ColoredConsoleAppender.LevelColors { Level = Level.Debug, ForeColor = ColoredConsoleAppender.Colors.White });
+                appender.AddMapping(new ColoredConsoleAppender.LevelColors { Level = Level.Info, ForeColor = ColoredConsoleAppender.Colors.White | ColoredConsoleAppender.Colors.HighIntensity });
+                appender.AddMapping(new ColoredConsoleAppender.LevelColors { Level = Level.Warn, ForeColor = ColoredConsoleAppender.Colors.Yellow | ColoredConsoleAppender.Colors.HighIntensity });
+                appender.AddMapping(new ColoredConsoleAppender.LevelColors { Level = Level.Error, ForeColor = ColoredConsoleAppender.Colors.Red | ColoredConsoleAppender.Colors.HighIntensity });
+                appender.AddMapping(new ColoredConsoleAppender.LevelColors { Level = Level.Fatal, ForeColor = ColoredConsoleAppender.Colors.White | ColoredConsoleAppender.Colors.HighIntensity, BackColor = ColoredConsoleAppender.Colors.Red });
+                appender.ActivateOptions();
+                BasicConfigurator.Configure(appender);
+            }
 
             var server = new Server();
             server.Start();
