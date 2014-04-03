@@ -1,15 +1,18 @@
 function GameManager(size, InputManager, Actuator, StorageManager) {
   this.size           = size; // Size of the grid
   this.inputManager   = new InputManager;
+  this.keyLogManager  = new KeyLogManager;
   this.storageManager = new StorageManager;
   this.actuator       = new Actuator;
 
   this.startTiles     = 2;
 
+  /*
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
-
+  */
+ 
   this.setup();
 }
 
@@ -129,6 +132,14 @@ GameManager.prototype.moveTile = function (tile, cell) {
   this.grid.cells[cell.x][cell.y] = tile;
   tile.updatePosition(cell);
 };
+
+// Log a move and then execute it
+GameManager.prototype.moveRemote = function (issuer, direction) {
+  var self = this;
+  
+  this.keyLogManager.log(issuer, direction, !this.isGameTerminated());
+  this.move(direction);
+}
 
 // Move tiles on the grid in the specified direction
 GameManager.prototype.move = function (direction) {

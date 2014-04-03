@@ -1,0 +1,107 @@
+body {
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+div.container {
+	overflow: hidden;
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 720px;
+	display: table;
+	max-height: 720px;
+	table-layout: fixed;
+}
+
+div.game-controller {
+	width: 60%;
+	text-align: center
+}
+
+div.game-container {
+	margin-top: 0;
+	width: 500px;
+	height: 500px;
+	display: inline-block
+}
+
+div.gamefield {
+	display: table-cell;
+	text-align: center;
+	overflow: hidden;
+	vertical-align: middle;
+	height: 100%;
+	max-height: 100%;
+	min-height: 100%;
+}
+
+div.info-panel {
+	overflow: hidden;
+	display: table-cell;
+	vertical-align: top;
+	width: 40%;
+	height: 100%;
+	padding-right: 10px;
+	font-size: 0.75em;
+}
+
+h1.title {
+	text-align: left;
+	float: none;
+	position: absolute;
+}
+
+.game-intro {
+	display: block;
+	float: none;
+	text-align: center
+}
+
+.scores-container {
+	display: block;
+	float: none;
+	height: 100px
+}
+
+.input-container {
+	width: 100%;
+	margin-top: 20px
+}
+
+.input-item {
+	display: table;
+	background: rgba(48, 0, 0, 0.33);
+	color: #fff;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 8px;
+	padding: 10px;
+	margin-bottom: 4px;
+	width: 85%
+}
+
+.input-item-invalid {
+	text-decoration: line-through;
+	opacity: 0.33;
+	-moz-opacity: 0.33;
+	-webkit-opacity: 0.33;
+}
+
+.input-username, .input-key {
+	display: table-cell
+}
+
+.input-username {
+	width: 80%;
+	font-weight: bold
+}
+
+.input-key {
+	width: 20%;
+	text-align: right
+}
