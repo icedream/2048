@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Threading;
 using System.Windows.Documents;
@@ -49,10 +50,46 @@ namespace Icedream.TwitchPlays2048
 
         public void BroadcastInput(string issuer, Direction direction)
         {
-            var j = JsonConvert.SerializeObject(new { issuer, direction=(int)direction });
             _log.DebugFormat("{0} typed {1}", issuer, direction);
+
+            var j = JsonConvert.SerializeObject(new { type="input", issuer, direction=(int)direction });
             foreach(var client in _clients)
-                client.Send(j);
+                try
+                {
+                    client.Send(j);
+                }
+                catch(Exception err)
+                {
+                    _log.WarnFormat("Error while broadcasting input to game: {0}", err.Message);
+                }
+        }
+
+        public void BroadcastDisconnected()
+        {
+            var j = JsonConvert.SerializeObject(new { type = "disconnected" });
+            foreach (var client in _clients)
+                try
+                {
+                    client.Send(j);
+                }
+                catch (Exception err)
+                {
+                    _log.WarnFormat("Error while broadcasting IRC chat disruption to game: {0}", err.Message);
+                }
+        }
+
+        public void BroadcastConnected()
+        {
+            var j = JsonConvert.SerializeObject(new { type = "connected" });
+            foreach (var client in _clients)
+                try
+                {
+                    client.Send(j);
+                }
+                catch (Exception err)
+                {
+                    _log.WarnFormat("Error while broadcasting IRC chat connection to game: {0}", err.Message);
+                }
         }
 
         static void Main()
@@ -73,17 +110,10 @@ namespace Icedream.TwitchPlays2048
             var server = new Server();
             server.Start();
 
-            var random = new Random();
-            while (true)
-            {
-                var username = new String(
-                    Enumerable.Repeat("abcdefghijklmnopqrstuvwxyz0123456789_", random.Next(4, 24))
-                    .Select(s => s[random.Next(s.Length)])
-                    .ToArray()
-                    );
-                server.BroadcastInput(username, (Direction)Math.Min(3, random.Next(0, 4)));
-                Thread.Sleep(TimeSpan.FromMilliseconds(random.Next(30, 300)));
-            }
+            var bot = new Bot(server);
+            bot.Start();
+
+            Thread.Sleep(Timeout.Infinite);
         }
     }
 
