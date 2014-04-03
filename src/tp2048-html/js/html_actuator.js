@@ -5,6 +5,7 @@ function HTMLActuator() {
   this.messageContainer = document.querySelector(".game-message");
 
   this.score = 0;
+  this.countdownEnd = 0;
 }
 
 HTMLActuator.prototype.actuate = function (grid, metadata) {
@@ -30,9 +31,30 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
       } else if (metadata.won) {
         self.message(true); // You win!
       }
+	  self.startCountdown();
     }
-
   });
+};
+
+HTMLActuator.prototype.startCountdown = function () {
+	game.countdownEnd = Date.now() + 45000;
+	game.countdownTimer = setInterval(this.countdownRun, 250);
+	this.countdownRun();
+};
+
+HTMLActuator.prototype.countdownRun = function () {
+	var currentTime = Date.now();
+	
+	if (currentTime >= game.countdownEnd)
+	{
+		clearInterval(game.countdownTimer);
+		game.restart();
+		return;
+	}
+	
+	var countdown = Math.ceil((game.countdownEnd - currentTime) / 1000)
+	
+	$(".retry-button").text(countdown + " seconds until next round");
 };
 
 // Continues the game (both restart and keep playing)
