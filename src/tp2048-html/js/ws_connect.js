@@ -1,5 +1,5 @@
 $(function() {
-	var sock = new WebSocket("ws://localhost:19661/");
+	var sock = new WebSocket("ws://localhost:57123/");
 	sock.onmessage = function (evt) 
 	{ 
         var msg = $.parseJSON(evt.data);
