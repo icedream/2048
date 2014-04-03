@@ -1,5 +1,5 @@
 function KeyLogManager() {
-	this.directionString = [ "Up", "Right", "Down", "Left" ];
+	this.directionString = [ "Up &#8593;", "Right &#8594;", "Down &#8595;", "Left &#8592;" ];
 }
 
 KeyLogManager.prototype.log = function(issuer, direction, valid) {
@@ -8,19 +8,25 @@ KeyLogManager.prototype.log = function(issuer, direction, valid) {
 	$logEntry.append($logKey = $("<div></div>", { class: "input-key" }));
 	
 	$logUsername.text(issuer);
-	$logKey.text(this.directionString[direction]);
+	$logKey.html(this.directionString[direction]);
 	
 	$logEntry.hide();
 	
 	$(".input-container").prepend($logEntry);
+	log_hide_last();
 	//$logEntry.slideDown("fast");
-	$logEntry.show(100);
+	$logEntry.slideDown(150);
+	//$logEntry.show();
+	
 }
 
 function log_hide_last() {
 	$items = $(".input-container > div");
-	if ($items.length >= 9) {
-		$items.last().hide(100, function() { $(this).remove(); log_hide_last() });
+	if ($items.length == 14) {
+		$items.last().slideUp(150, function() { $(this).remove(); log_hide_last() });
+		return;
+	} else if ($items.length > 14) {
+		$items.last().hide(0, function() { $(this).remove(); log_hide_last(); });
 		return;
 	}
 	
