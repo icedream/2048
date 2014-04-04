@@ -4,3 +4,4 @@ as author on the webpages linked below:
 - move_invalid.ogg (converted from WAV format, CC0 license): http://www.freesound.org/people/carbilicon/sounds/65243/
 - restart.ogg (converted from WAV format, CC0 license): http://www.freesound.org/people/pera/sounds/56229/
 - loss.ogg (converted from WAV format, CC0 license): http://www.freesound.org/people/Erokia/sounds/217792/
+- countdown_tick.ogg (converted from AIFF format, CC-BY 3.0 license - http://creativecommons.org/licenses/by/3.0/): http://www.freesound.org/people/jorickhoofd/sounds/160052/
