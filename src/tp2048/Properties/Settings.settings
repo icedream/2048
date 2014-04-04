@@ -11,5 +11,8 @@
     <Setting Name="SocketPort" Type="System.UInt16" Scope="Application">
       <Value Profile="(Default)">57123</Value>
     </Setting>
+    <Setting Name="Simulation" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

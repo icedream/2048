@@ -49,5 +49,14 @@ namespace Icedream.TwitchPlays2048.Properties {
                 return ((ushort)(this["SocketPort"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Simulation {
+            get {
+                return ((bool)(this["Simulation"]));
+            }
+        }
     }
 }

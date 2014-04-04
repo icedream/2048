@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net;
 using System.Threading;
 using Alchemy;
@@ -121,7 +122,21 @@ namespace Icedream.TwitchPlays2048
             var bot = new Bot(server);
             bot.Start();
 
-            Thread.Sleep(Timeout.Infinite);
+            if (!Properties.Settings.Default.Simulation)
+            {
+                Thread.Sleep(Timeout.Infinite);
+                return;
+            }
+
+            // Simulation
+            var r = new Random();
+            while (true)
+            {
+                var randomUsername = r.Next(100000, 999999).ToString(CultureInfo.InvariantCulture);
+                var randomDirection = (Direction)Math.Min(3, r.Next(0, 4));
+                server.BroadcastInput(randomUsername, randomDirection);
+                Thread.Sleep(r.Next(50, 1500));
+            }
         }
     }
 
