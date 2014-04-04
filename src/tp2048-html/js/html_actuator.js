@@ -37,9 +37,10 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
 };
 
 HTMLActuator.prototype.startCountdown = function () {
+	game.oldCountdown = 45;
 	game.countdownEnd = Date.now() + 45000;
 	game.countdownTimer = setInterval(this.countdownRun, 250);
-	this.countdownRun();
+	
 };
 
 HTMLActuator.prototype.countdownRun = function () {
@@ -52,7 +53,12 @@ HTMLActuator.prototype.countdownRun = function () {
 		return;
 	}
 	
-	var countdown = Math.ceil((game.countdownEnd - currentTime) / 1000)
+	var countdown = Math.ceil((game.countdownEnd - currentTime) / 1000);
+	if (game.oldCountdown == undefined || game.oldCountdown == null || game.oldCountdown != countdown)
+	{
+		createjs.Sound.play("countdown_tick");
+		game.oldCountdown = countdown;
+	}
 	
 	$(".retry-button").text(countdown + " seconds until next round");
 };

@@ -3,6 +3,7 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.inputManager   = new InputManager;
   this.keyLogManager  = new KeyLogManager;
   this.storageManager = new StorageManager;
+  this.soundManager   = new SoundManager;
   this.actuator       = new Actuator;
 
   this.startTiles     = 2;
@@ -21,6 +22,7 @@ GameManager.prototype.restart = function () {
   this.storageManager.clearGameState();
   this.actuator.continueGame(); // Clear the game won/lost message
   this.setup();
+  this.soundManager.play("restart");
 };
 
 // Keep playing after winning (allows going over 2048)
@@ -78,7 +80,8 @@ GameManager.prototype.addRandomTile = function () {
     var value = Math.random() < 0.9 ? 2 : 4;
     var tile = new Tile(this.grid.randomAvailableCell(), value);
 
-    this.grid.insertTile(tile);
+	  this.grid.insertTile(tile);
+	  this.soundManager.play("insert_tile");
   }
 };
 
@@ -146,7 +149,10 @@ GameManager.prototype.move = function (direction) {
   // 0: up, 1: right, 2: down, 3: left
   var self = this;
 
-  if (this.isGameTerminated()) return; // Don't do anything if the game's over
+	if (this.isGameTerminated()) {
+		createjs.Sound.play("move_invalid");
+	return null; // Don't do anything if the game's over
+  }
 
   var cell, tile;
 
@@ -180,6 +186,7 @@ GameManager.prototype.move = function (direction) {
 
           // Update the score
           self.score += merged.value;
+			createjs.Sound.play("tileup_" + merged.value);
 
           // The mighty 1024 tile
           if (merged.value === 1024) self.won = true;
@@ -193,6 +200,8 @@ GameManager.prototype.move = function (direction) {
       }
     });
   });
+  
+  createjs.Sound.play(moved ? "move" : "move_invalid", {interrupt:createjs.Sound.INTERRUPT_NONE, volume:0.3});
 
   if (moved) {
     this.addRandomTile();

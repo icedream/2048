@@ -1,95 +1,112 @@
 <!-- saved from url=(0014)about:internet -->
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>1024</title>
-	
-  <link href="style/main.css" rel="stylesheet" type="text/css">
-  <link href="style/tp2048.css" rel="stylesheet" type="text/css">
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="meta/apple-touch-icon.png">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui">
-</head>
-<body>
-  <div class="container">
-	<div class="gamefield">
-		<div class="game-container">
-		  <div class="game-message">
-			<p></p>
-			<div class="lower">
-				<a class="keep-playing-button">Keep going</a>
-			  <a class="retry-button">Try again</a>
+	<head>
+		<meta charset="utf-8"/>
+		<title>1024</title>
+		<link href="style/main.css" rel="stylesheet" type="text/css"/>
+		<link href="style/tp2048.css" rel="stylesheet" type="text/css"/>
+		<link rel="shortcut icon" href="favicon.ico"/>
+		<link rel="apple-touch-icon" href="meta/apple-touch-icon.png"/>
+		<meta name="apple-mobile-web-app-capable" content="yes"/>
+		<meta name="HandheldFriendly" content="True"/>
+		<meta name="MobileOptimized" content="320"/>
+		<meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0, maximum-scale=1, user-scalable=no, minimal-ui"/>
+	</head>
+	<body>
+		<div class="container">
+			<div class="gamefield">
+				<div class="game-container">
+					<div class="game-message">
+						<p></p>
+						<div class="lower">
+							<a class="keep-playing-button">Keep going</a>
+							<a class="retry-button">Try again</a>
+						</div>
+					</div>
+					<div class="grid-container">
+						<div class="grid-row">
+							<div class="grid-cell">
+							</div>
+							<div class="grid-cell">
+							</div>
+							<div class="grid-cell">
+							</div>
+							<div class="grid-cell">
+							</div>
+						</div>
+						<div class="grid-row">
+							<div class="grid-cell">
+							</div>
+							<div class="grid-cell">
+							</div>
+							<div class="grid-cell">
+							</div>
+							<div class="grid-cell">
+							</div>
+						</div>
+						<div class="grid-row">
+							<div class="grid-cell">
+							</div>
+							<div class="grid-cell">
+							</div>
+							<div class="grid-cell">
+							</div>
+							<div class="grid-cell">
+							</div>
+						</div>
+						<div class="grid-row">
+							<div class="grid-cell">
+							</div>
+							<div class="grid-cell">
+							</div>
+							<div class="grid-cell">
+							</div>
+							<div class="grid-cell">
+							</div>
+						</div>
+					</div>
+					<div class="tile-container">
+					</div>
+				</div>
 			</div>
-		  </div>
-
-		  <div class="grid-container">
-			<div class="grid-row">
-			  <div class="grid-cell"></div>
-			  <div class="grid-cell"></div>
-			  <div class="grid-cell"></div>
-			  <div class="grid-cell"></div>
+			<div class="info-panel">
+				<h1 class="title">
+					<div style="display: inline-block; float: left; font-size: 0.13em; margin-top:18px">
+						Twitch <br/>plays
+					</div>
+					1024
+				</h1>
+				<div class="scores-container">
+					<div class="score-container">
+						0
+					</div>
+					<div class="best-container">
+						0
+					</div>
+				</div>
+				<p class="game-intro">
+					 Join the numbers and get to the <strong>1024 tile!</strong><br/>
+					Type <code>l</code> (left), <code>r</code> (right), <code>u</code> (up) or <code>d</code> (down) into the chat.
+				</p>
+				<div class="input-container">
+				</div>
 			</div>
-			<div class="grid-row">
-			  <div class="grid-cell"></div>
-			  <div class="grid-cell"></div>
-			  <div class="grid-cell"></div>
-			  <div class="grid-cell"></div>
-			</div>
-			<div class="grid-row">
-			  <div class="grid-cell"></div>
-			  <div class="grid-cell"></div>
-			  <div class="grid-cell"></div>
-			  <div class="grid-cell"></div>
-			</div>
-			<div class="grid-row">
-			  <div class="grid-cell"></div>
-			  <div class="grid-cell"></div>
-			  <div class="grid-cell"></div>
-			  <div class="grid-cell"></div>
-			</div>
-		  </div>
-
-		  <div class="tile-container">
-
-		  </div>
 		</div>
-	</div>
-    <div class="info-panel">
-      <h1 class="title">
-		<div style="display: inline-block; float: left; font-size: 0.13em; margin-top:18px">
-			
-				Twitch<br/>plays
-			</div>
-			1024
-	  </h1>
-      <div class="scores-container">
-        <div class="score-container">0</div>
-        <div class="best-container">0</div>
-      </div>
-	  <p class="game-intro">Join the numbers and get to the <strong>1024 tile!</strong><br />Type <code>l</code> (left), <code>r</code> (right), <code>u</code> (up) or <code>d</code> (down) into the chat.</p>
-		<div class="input-container">
-	  </div>
-    </div>
-
-  </div>
-
-  <script src="http://code.jquery.com/jquery.min.js"></script>
-  <script src="js/bind_polyfill.js"></script>
-  <script src="js/classlist_polyfill.js"></script>
-  <script src="js/animframe_polyfill.js"></script>
-  <script src="js/keyboard_input_manager.js"></script>
-  <script src="js/html_actuator.js"></script>
-  <script src="js/grid.js"></script>
-  <script src="js/tile.js"></script>
-	<script src="js/local_storage_manager.js"></script>
-	<script src="js/key_log_manager.js"></script>
-  <script src="js/game_manager.js"></script>
-	<script src="js/application.js"></script>
-	<script src="js/ws_connect.js"></script>
-</body>
+		<script src="http://code.jquery.com/jquery.min.js"></script>
+		<script src="http://code.createjs.com/createjs-2013.12.12.min.js"></script>
+		<script src="js/bind_polyfill.js"></script>
+		<script src="js/classlist_polyfill.js"></script>
+		<script src="js/animframe_polyfill.js"></script>
+		<script src="js/keyboard_input_manager.js"></script>
+		<script src="js/html_actuator.js"></script>
+		<script src="js/grid.js"></script>
+		<script src="js/tile.js"></script>
+		<script src="js/sound_manager.js"></script>
+		<script src="js/local_storage_manager.js"></script>
+		<script src="js/key_log_manager.js"></script>
+		<script src="js/game_manager.js"></script>
+		<script src="js/application.js"></script>
+		<script src="js/ws_connect.js"></script>
+	</body>
 </html>
