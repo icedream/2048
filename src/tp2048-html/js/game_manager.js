@@ -140,8 +140,10 @@ GameManager.prototype.moveTile = function (tile, cell) {
 GameManager.prototype.moveRemote = function (issuer, direction) {
   var self = this;
   
-  this.keyLogManager.log(issuer, direction, !this.isGameTerminated());
-  this.move(direction);
+  var terminated = !this.isGameTerminated();
+  var merges = this.move(direction);
+  
+  this.keyLogManager.log(issuer, direction, terminated && merges != null, merges);
 }
 
 // Move tiles on the grid in the specified direction
@@ -159,6 +161,7 @@ GameManager.prototype.move = function (direction) {
   var vector     = this.getVector(direction);
   var traversals = this.buildTraversals(vector);
   var moved      = false;
+  var merges     = [];
 
   // Save the current tile positions and remove merger information
   this.prepareTiles();
@@ -190,6 +193,8 @@ GameManager.prototype.move = function (direction) {
 
           // The mighty 1024 tile
           if (merged.value === 1024) self.won = true;
+		  
+		  merges.push(merged.value);
         } else {
           self.moveTile(tile, positions.farthest);
         }
@@ -211,7 +216,10 @@ GameManager.prototype.move = function (direction) {
     }
 
     this.actuate();
+	  return merges;
   }
+  
+  return null;
 };
 
 // Get the vector representing the chosen direction

@@ -58,6 +58,47 @@ HTMLActuator.prototype.countdownRun = function () {
 	{
 		createjs.Sound.play("countdown_tick");
 		game.oldCountdown = countdown;
+		
+		var $gmsg = $(".game-message > p");
+		switch(countdown)
+		{
+			case 40:
+				$gmsg.fadeOut("slow", function() {
+					var $st = $(".scoretable");
+					$st.hide();
+					
+					var scores = game.keyLogManager.getScores();
+					
+					$st.empty();
+					$st.append("<h2>Top scores this round</h2>");
+					
+					$table = $("<table><tr><th style=\"width: 60%\">Username</th><th style=\"width: 40%\">Score</th></tr></table>");
+					$st.append($table);
+					
+					var top = 0;
+					for (var i = 0; i < scores.length; i++)
+					{
+						var username = scores[i][0];
+						var score = scores[i][1];
+						$scoreTableItem = $("<tr><td></td><td></td></tr>");
+						$scoreTableItem.children("td").first().text(username);
+						$scoreTableItem.children("td").last().text(score);
+						$table.append($scoreTableItem);
+						
+						top++;
+						if (top == 10)
+						break;
+					}
+					$st.fadeIn("slow");
+					
+					game.keyLogManager.resetScores();
+				});
+				break;
+			case 1:
+				var $st = $(".scoretable");
+				$st.fadeOut(1000, function() { setTimeout($(".game-message > p").fadeIn(), 1000) });
+				break;
+		}		
 	}
 	
 	$(".retry-button").text(countdown + " seconds until next round");

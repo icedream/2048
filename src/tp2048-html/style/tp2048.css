@@ -92,7 +92,7 @@ h1.title {
 	padding-top: 5px;
 	padding-bottom: 5px;
 	margin-bottom: 2px;
-	width: 85%
+	width: 85%;
 }
 
 .input-item-invalid {
@@ -103,16 +103,89 @@ h1.title {
 }
 
 .input-username, .input-key {
-	display: table-cell
+	display: table-cell;
+	vertical-align: middle;
+	line-height: 1;
 }
 
 .input-username {
 	width: 80%;
-	font-weight: bold
+	font-weight: bold;
 }
 
 .input-key {
 	width: 20%;
 	text-align: right;
 	/*font-family: "Source Sans Pro";*/
+}
+
+.input-badge {
+  color: #776e65;
+	border: none;
+	font-size: 0.8em;
+	border-radius: 2px;
+	margin-left: 2px;
+	font-weight: normal;
+	font-style: italic;
+	min-width: 16px;
+	height: 16px;
+	max-height: 16px;
+	padding-top: 4px;
+	padding-bottom: 0px;
+	padding-left: 2px;
+	padding-right: 2px;
+	text-align: center;
+	display: inline-block;
+	float: right;
+}
+
+.input-badge-4 {
+    background: #ede0c8;
+    box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0);
+}
+.input-badge-8 {
+    color: #f9f6f2;
+    background: #f2b179;
+}
+.input-badge-16 {
+    color: #f9f6f2;
+    background: #f59563;
+}
+.input-badge-32 {
+    color: #f9f6f2;
+    background: #f67c5f;
+}
+.input-badge-64 {
+    color: #f9f6f2;
+    background: #f65e3b;
+}
+.input-badge-128 {
+	font-weight: bold;
+    color: #f9f6f2;
+    background: #edcf72;
+    box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.2381), inset 0 0 0 1px rgba(255, 255, 255, 0.14286);
+}
+.input-badge-256 {
+	font-weight: bold;
+    color: #f9f6f2;
+    background: #edcc61;
+    box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.31746), inset 0 0 0 1px rgba(255, 255, 255, 0.19048);
+}
+.input-badge-512 {
+	font-weight: bold;
+    color: #f9f6f2;
+    background: #edc850;
+    box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.39683), inset 0 0 0 1px rgba(255, 255, 255, 0.2381);
+}
+.input-badge-1024 {
+	font-weight: bold;
+    color: #f9f6f2;
+    background: #edc53f;
+    box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.47619), inset 0 0 0 1px rgba(255, 255, 255, 0.28571);
+}
+
+.scoretable > table {
+	margin-left: 25%;
+	width: 50%;
+	line-height: 1
 }
