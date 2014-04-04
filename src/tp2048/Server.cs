@@ -119,11 +119,11 @@ namespace Icedream.TwitchPlays2048
             var server = new Server();
             server.Start();
 
-            var bot = new Bot(server);
-            bot.Start();
-
             if (!Properties.Settings.Default.Simulation)
             {
+                var bot = new Bot(server);
+                bot.Start();
+
                 Thread.Sleep(Timeout.Infinite);
                 return;
             }
