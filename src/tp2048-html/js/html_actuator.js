@@ -31,7 +31,8 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
       } else if (metadata.won) {
         self.message(true); // You win!
       }
-	  self.startCountdown();
+		self.startCountdown();
+		game.timer.stopTimer();
     }
   });
 };

@@ -5,6 +5,7 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.storageManager = new StorageManager;
   this.soundManager   = new SoundManager;
   this.actuator       = new Actuator;
+  this.timer          = new Timer;
 
   this.startTiles     = 2;
 
@@ -19,10 +20,13 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
 
 // Restart the game
 GameManager.prototype.restart = function () {
-  this.storageManager.clearGameState();
-  this.actuator.continueGame(); // Clear the game won/lost message
-  this.setup();
-  this.soundManager.play("restart");
+	this.storageManager.clearGameState();
+	this.actuator.continueGame(); // Clear the game won/lost message
+	this.setup();
+	this.soundManager.play("restart");
+	this.timer.stopTimer();
+	this.timer.resetTimer();
+	this.timer.startTimer();
 };
 
 // Keep playing after winning (allows going over 2048)

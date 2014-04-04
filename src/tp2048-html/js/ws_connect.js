@@ -9,6 +9,7 @@ function init_ws() {
 		$(".server-disconnected-container").fadeOut("fast", function() {
 			$(".container").fadeIn("fast");
 		});
+		game.timer.startTimer();
 	};
 	sock.onmessage = function (evt) 
 	{ 
@@ -23,11 +24,13 @@ function init_ws() {
 				$(".container").fadeOut("fast", function() {
 					$(".chat-disconnected-container").fadeIn("fast");
 				});
+				game.timer.stopTimer();
 				break;
 			case "connected":
 				$(".chat-disconnected-container").fadeOut("fast", function() {
 					$(".container").fadeIn("fast");
 				});
+				game.timer.startTimer();
 				break;
 		}
 	};
@@ -41,6 +44,7 @@ function init_ws() {
 		$(".container").fadeOut("fast", function() {
 			$(".server-disconnected-container").fadeIn("fast");
 		});
+		game.timer.stopTimer();
 		setTimeout(init_ws, 5000);
 	};
 	ws_keepalive = setInterval(function(){sock.send("{}")}, 5000);
