@@ -40,6 +40,8 @@ namespace Icedream.TwitchPlays2048
                             _clients.RemoveAll(c => ctx.ClientAddress == c.ClientAddress);
                         }
                     };
+                    _server.Start();
+                    _server.Stop();
                     return;
                 }
                 catch
