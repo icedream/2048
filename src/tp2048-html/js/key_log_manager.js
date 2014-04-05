@@ -1,7 +1,8 @@
 function KeyLogManager() {
-	this.directionString = [ "Up &#8593;", "Right &#8594;", "Down &#8595;", "Left &#8592;" ];
-	this.resetScores();
 }
+
+KeyLogManager.prototype.directionString =  [ "Up &#8593;", "Right &#8594;", "Down &#8595;", "Left &#8592;" ];
+KeyLogManager.prototype.scoreTable = {};
 
 KeyLogManager.prototype.resetScores = function() {
 	this.scoreTable = {};

@@ -1,6 +1,7 @@
 function Timer() {
-	this.timerCurrent = 0;
 }
+
+Timer.prototype.timerCurrent = 0;
 
 function analyzeMilliseconds(ms) {
   var d, h, m, s;
