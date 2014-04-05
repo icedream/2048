@@ -60,7 +60,7 @@ KeyLogManager.prototype.log = function(issuer, direction, valid, merges) {
 				var counter = 2;
 				if ($logBadgeMultiplier.text().length > 0)
 				{
-					counter = int($logBadgeMultiplier.text().substr(1)) + 1;
+					counter = parseInt($logBadgeMultiplier.text().substr(1)) + 1;
 				}
 				$logBadgeMultiplier.text("x" + counter);
 			}
