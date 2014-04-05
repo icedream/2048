@@ -197,11 +197,11 @@ content: "Time"; }
 .time-container {
   position: relative;
   display: inline-block;
-  background: #bbada0;
+  background: #f0f;
   padding: 15px 25px;
-  font-size: 25px;
+/*  font-size: 25px;*/
   height: 25px;
-  line-height: 47px;
+  line-height: 42px;
   font-weight: bold;
   border-radius: 3px;
   color: white;
@@ -213,25 +213,10 @@ content: "Time"; }
     top: 10px;
     left: 0;
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 12px;
     line-height: 13px;
     text-align: center;
-    color: #eee4da; }
-  .time-container .score-addition {
-    position: absolute;
-    right: 30px;
-    color: red;
-    font-size: 25px;
-    line-height: 25px;
-    font-weight: bold;
-    color: rgba(119, 110, 101, 0.9);
-    z-index: 100;
-    -webkit-animation: move-up 600ms ease-in;
-    -moz-animation: move-up 600ms ease-in;
-    animation: move-up 600ms ease-in;
-    -webkit-animation-fill-mode: both;
-    -moz-animation-fill-mode: both;
-    animation-fill-mode: both; }
+    color: #000; }
 
 .score-container, .best-container, .time-container {
   position: relative;
