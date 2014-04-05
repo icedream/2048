@@ -33,7 +33,7 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
         self.message(true); // You win!
       }
 		self.startCountdown();
-		self.stopTimer();
+		self.game.timer.stopTimer();
     }
   });
 };
@@ -41,7 +41,7 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
 HTMLActuator.prototype.startCountdown = function () {
 	var self = this;
 	
-	game.oldCountdown = 45;
+	self.oldCountdown = 45;
 	self.countdownEnd = Date.now() + 45000;
 	self.countdownTimer = setInterval(function() { self.countdownRun() }, 250);
 	
@@ -53,15 +53,15 @@ HTMLActuator.prototype.countdownRun = function () {
 	if (currentTime >= self.countdownEnd)
 	{
 		clearInterval(self.countdownTimer);
-		game.restart();
+		self.game.restart();
 		return;
 	}
 	
 	var countdown = Math.ceil((self.countdownEnd - currentTime) / 1000);
-	if (game.oldCountdown == undefined || game.oldCountdown == null || game.oldCountdown != countdown)
+	if (self.oldCountdown == undefined || self.oldCountdown == null || self.oldCountdown != countdown)
 	{
 		createjs.Sound.play("countdown_tick");
-		game.oldCountdown = countdown;
+		self.game.oldCountdown = countdown;
 		
 		var $gmsg = $(".game-message > p");
 		switch(countdown)
@@ -71,7 +71,7 @@ HTMLActuator.prototype.countdownRun = function () {
 					var $st = $(".scoretable");
 					$st.hide();
 					
-					var scores = game.keyLogManager.getScores();
+					var scores = self.game.keyLogManager.getScores();
 					
 					$st.empty();
 					$st.append("<h2>Top scores this round</h2>");
@@ -95,7 +95,7 @@ HTMLActuator.prototype.countdownRun = function () {
 					}
 					$st.fadeIn("slow");
 					
-					game.keyLogManager.resetScores();
+					self.game.keyLogManager.resetScores();
 				});
 				break;
 			case 1:
