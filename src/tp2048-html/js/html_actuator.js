@@ -48,6 +48,8 @@ HTMLActuator.prototype.startCountdown = function () {
 };
 
 HTMLActuator.prototype.countdownRun = function () {
+	var self = this;
+	
 	var currentTime = Date.now();
 	
 	if (currentTime >= self.countdownEnd)
@@ -61,7 +63,7 @@ HTMLActuator.prototype.countdownRun = function () {
 	if (self.oldCountdown == undefined || self.oldCountdown == null || self.oldCountdown != countdown)
 	{
 		createjs.Sound.play("countdown_tick");
-		self.game.oldCountdown = countdown;
+		self.oldCountdown = countdown;
 		
 		var $gmsg = $(".game-message > p");
 		switch(countdown)
