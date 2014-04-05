@@ -24,19 +24,28 @@ namespace Icedream.TwitchPlays2048
         public Server(ushort port)
         {
             _log = LogManager.GetLogger("GameConnector");
-            _server = new WebSocketServer(port, IPAddress.Loopback)
-            {
-                OnConnect = ctx =>
+            while (true)
+                try
                 {
-                    _log.InfoFormat("Game client connected: {0}", ctx.ClientAddress);
-                    _clients.Add(ctx);
-                },
-                OnDisconnect = ctx => 
-                {
-                    _log.InfoFormat("Game client disconnected: {0}", ctx.ClientAddress);
-                    _clients.RemoveAll(c => ctx.ClientAddress == c.ClientAddress);
+                    _server = new WebSocketServer(port, IPAddress.Loopback)
+                    {
+                        OnConnect = ctx =>
+                        {
+                            _log.InfoFormat("Game client connected: {0}", ctx.ClientAddress);
+                            _clients.Add(ctx);
+                        },
+                        OnDisconnect = ctx =>
+                        {
+                            _log.InfoFormat("Game client disconnected: {0}", ctx.ClientAddress);
+                            _clients.RemoveAll(c => ctx.ClientAddress == c.ClientAddress);
+                        }
+                    };
+                    return;
                 }
-            };
+                catch
+                {
+                    port++;
+                }
         }
 
         public void Start()
