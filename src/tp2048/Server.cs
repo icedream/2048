@@ -27,7 +27,7 @@ namespace Icedream.TwitchPlays2048
             while (true)
                 try
                 {
-                    _log.InfoFormat("Configuring for port {0}", port);
+                    _log.InfoFormat("Configuring for port {0} (without flash policy server)", port);
                     _server = new WebSocketServer(port, IPAddress.Loopback)
                     {
                         OnConnect = ctx =>
@@ -39,7 +39,8 @@ namespace Icedream.TwitchPlays2048
                         {
                             _log.InfoFormat("Game client disconnected: {0}", ctx.ClientAddress);
                             _clients.RemoveAll(c => ctx.ClientAddress == c.ClientAddress);
-                        }
+                        },
+                        FlashAccessPolicyEnabled = false
                     };
                     _server.Start();
                     _server.Stop();
