@@ -21,10 +21,10 @@ namespace Icedream.TwitchPlays2048
         private readonly WebSocketServer _server;
         private readonly List<UserContext> _clients = new List<UserContext>();
 
-        public Server()
+        public Server(ushort port)
         {
             _log = LogManager.GetLogger("GameConnector");
-            _server = new WebSocketServer(Properties.Settings.Default.SocketPort, IPAddress.Loopback)
+            _server = new WebSocketServer(port, IPAddress.Loopback)
             {
                 OnConnect = ctx =>
                 {
@@ -116,7 +116,7 @@ namespace Icedream.TwitchPlays2048
                 BasicConfigurator.Configure(appender);
             }
 
-            var server = new Server();
+            var server = new Server(Properties.Settings.Default.SocketPort);
             server.Start();
 
             if (!Properties.Settings.Default.Simulation)
