@@ -28,9 +28,11 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
 
     if (metadata.terminated) {
       if (metadata.over) {
-        self.message(false); // You lose
+		  self.message(false); // You lose
+		  spam_doge_loss();
       } else if (metadata.won) {
-        self.message(true); // You win!
+		  self.message(true); // You win!
+		  spam_doge_win();
       }
 		self.startCountdown();
 		self.game.timer.stopTimer();
