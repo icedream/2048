@@ -7,9 +7,11 @@ html, body {
 /*  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;*/
   font-family: 'Comic Sans', 'Comic Sans', Chalkboard, Helvetica, Arial, sans-serif;
   font-size: 18px; 
+  /*
   -webkit-animation: background-gradient-change linear 6s infinite alternate;
   -moz-animation: background-gradient-change linear 6s infinite alternate;
-  -moz-animation: background-gradient-change linear 6s infinite alternate; }
+  -moz-animation: background-gradient-change linear 6s infinite alternate; */
+  }
 
 body {
   margin: 20px 0 0 0; }
