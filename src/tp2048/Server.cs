@@ -27,6 +27,7 @@ namespace Icedream.TwitchPlays2048
             while (true)
                 try
                 {
+                    _log.InfoFormat("Configuring for port {0}", port);
                     _server = new WebSocketServer(port, IPAddress.Loopback)
                     {
                         OnConnect = ctx =>
