@@ -3,7 +3,7 @@ as author on the webpages linked below:
 
 - move_invalid.ogg (converted from WAV format, CC0 license): http://www.freesound.org/people/carbilicon/sounds/65243/
 - restart.ogg (converted from WAV format, CC0 license): http://www.freesound.org/people/pera/sounds/56229/
-- loss.ogg (converted from WAV format, public domain license): http://soundbible.com/2034-Growling-Snarling-Dogs.html
+- loss.ogg (converted from WAV format, CC0 license): http://www.freesound.org/people/Erokia/sounds/217792/
 - tileup sounds 4 and 8 (converted from WAV format, CC0 license): http://www.freesound.org/people/BigKahuna360/sounds/155567/
 - tileup sounds 16 and 32 (converted from WAV format, CC0 license): http://www.freesound.org/people/Erokia/sounds/158139/
 - tileup sounds 64 and higher (converted from WAV format, CC0 license): http://www.freesound.org/people/Erokia/sounds/213123/

@@ -194,8 +194,6 @@ GameManager.prototype.move = function (direction) {
           // Update the score
           self.score += merged.value;
 			createjs.Sound.play("tileup_" + merged.value);
-		
-		display_doge();
 
           // The mighty 1024 tile
           if (merged.value === 1024) self.won = true;
