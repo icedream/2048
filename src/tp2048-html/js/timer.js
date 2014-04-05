@@ -1,7 +1,6 @@
 function Timer() {
+	this.timerCurrent = 0;
 }
-
-Timer.prototype.timerCurrent = 0;
 
 function analyzeMilliseconds(ms) {
   var d, h, m, s;
@@ -44,8 +43,10 @@ Timer.prototype.stopTimer = function() {
 
 Timer.prototype.startTimer = function() {
 	if (this.timerHandle != null)
-		return;
-	this.timerHandle = setInterval(this.increaseTime, 1000);
+	return;
+	
+	var self = this;
+	this.timerHandle = setInterval(function() { self.increaseTime() }, 1000);
 	$("div.time-container").fadeIn("fast");
 };
 

@@ -1,4 +1,4 @@
-function HTMLActuator() {
+function HTMLActuator(game) {
   this.tileContainer    = document.querySelector(".tile-container");
   this.scoreContainer   = document.querySelector(".score-container");
   this.bestContainer    = document.querySelector(".best-container");
@@ -6,6 +6,7 @@ function HTMLActuator() {
 
   this.score = 0;
   this.countdownEnd = 0;
+  this.game = game;
 }
 
 HTMLActuator.prototype.actuate = function (grid, metadata) {
@@ -32,29 +33,31 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
         self.message(true); // You win!
       }
 		self.startCountdown();
-		game.timer.stopTimer();
+		self.stopTimer();
     }
   });
 };
 
 HTMLActuator.prototype.startCountdown = function () {
+	var self = this;
+	
 	game.oldCountdown = 45;
-	game.countdownEnd = Date.now() + 45000;
-	game.countdownTimer = setInterval(this.countdownRun, 250);
+	self.countdownEnd = Date.now() + 45000;
+	self.countdownTimer = setInterval(function() { self.countdownRun() }, 250);
 	
 };
 
 HTMLActuator.prototype.countdownRun = function () {
 	var currentTime = Date.now();
 	
-	if (currentTime >= game.countdownEnd)
+	if (currentTime >= self.countdownEnd)
 	{
-		clearInterval(game.countdownTimer);
+		clearInterval(self.countdownTimer);
 		game.restart();
 		return;
 	}
 	
-	var countdown = Math.ceil((game.countdownEnd - currentTime) / 1000);
+	var countdown = Math.ceil((self.countdownEnd - currentTime) / 1000);
 	if (game.oldCountdown == undefined || game.oldCountdown == null || game.oldCountdown != countdown)
 	{
 		createjs.Sound.play("countdown_tick");

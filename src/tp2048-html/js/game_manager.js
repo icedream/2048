@@ -4,7 +4,7 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.keyLogManager  = new KeyLogManager;
   this.storageManager = new StorageManager;
   this.soundManager   = new SoundManager;
-  this.actuator       = new Actuator;
+  this.actuator       = new Actuator(this);
   this.timer          = new Timer;
 
   this.startTiles     = 2;
